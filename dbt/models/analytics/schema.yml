@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: dim_location
+    description: "Location dimension (city + coordinates)."
+    columns:
+      - name: location_id
+        tests:
+          - not_null
+          - unique
+      - name: city
+        tests:
+          - not_null
+      - name: latitude
+        tests:
+          - not_null
+      - name: longitude
+        tests:
+          - not_null
+
+  - name: dim_date
+    description: "Date dimension derived from weather timestamps."
+    columns:
+      - name: date_id
+        tests:
+          - not_null
+          - unique
+
+  - name: fact_weather_hourly
+    description: "Hourly weather fact table."
+    columns:
+      - name: ts_utc
+        tests:
+          - not_null
+      - name: location_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_location')
+              field: location_id
+      - name: date_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_id
+      - name: temperature_c
+        tests:
+          - not_null
+      - name: relative_humidity_pct
+        tests:
+          - not_null
+      - name: precipitation_mm
+        tests:
+          - not_null
+      - name: wind_speed_kmh
+        tests:
+          - not_null

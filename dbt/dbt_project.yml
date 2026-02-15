@@ -1,0 +1,21 @@
+name: weather_analytics
+version: "1.0.0"
+config-version: 2
+
+profile: weather_analytics
+
+model-paths: ["models"]
+test-paths: ["tests"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  weather_analytics:
+    +on_schema_change: sync_all_columns
+    staging:
+      +schema: staging
+      +materialized: view
+    analytics:
+      +schema: analytics
+      +materialized: table
