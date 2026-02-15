@@ -56,3 +56,47 @@ Each step is isolated, traceable and orchestrated to ensure data reliability.
 ### Start the pipeline
 ```bash
 docker-compose up --build
+
+
+Once running:
+
+Airflow UI is available for pipeline monitoring
+
+The database contains raw, staging and analytics schemas
+
+🔍 Data Quality
+
+Data quality is treated as a first-class concern.
+
+The pipeline includes checks for:
+
+missing values
+
+duplicates
+
+invalid ranges
+
+If a quality rule fails, the pipeline stops, preventing unreliable data from propagating further.
+
+📌 Why This Project Exists
+
+This project was created to demonstrate practical data engineering skills:
+
+designing reliable pipelines
+
+structuring data for analytics
+
+automating workflows
+
+thinking in terms of systems rather than scripts
+
+It reflects how data engineering work is approached in real-world teams.
+
+👤 Author
+
+Ilyesse El Adaoui
+Data Engineer
+
+GitHub: https://github.com/Ilyesse-soc
+
+LinkedIn: https://www.linkedin.com/in/ilyesse-eladaoui/
